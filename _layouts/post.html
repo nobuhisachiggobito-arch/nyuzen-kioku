@@ -1,0 +1,54 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <p class="post-meta">
+      <span class="post-category">{{ page.category }}</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%-m月%-d日" }}</time>
+    </p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.summary %}<p class="post-summary">{{ page.summary }}</p>{% endif %}
+    {% if page.speaker %}
+    <p class="post-speaker">お話：{{ page.speaker }}</p>
+    {% endif %}
+  </header>
+
+  {% if page.image %}
+  <figure class="post-hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  {% if page.speaker %}
+  <aside class="note">
+    この記事の聞き書きの部分は、お話しくださった方の記憶にもとづくもので、掲載内容はご本人に確認していただいています。
+  </aside>
+  {% endif %}
+
+  {% if page.sources %}
+  <section class="sources" aria-labelledby="sources-heading">
+    <h2 id="sources-heading">出典・参考</h2>
+    <ul>
+      {% for s in page.sources %}
+      <li>{% if s.url %}<a href="{{ s.url }}">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}{% if s.note %}（{{ s.note }}）{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <p class="post-updated">
+    {% if page.updated %}最終更新：{{ page.updated | date: "%Y年%-m月%-d日" }}　{% endif %}
+    誤りに気づいた方は、X（@{{ site.x_account }}）までお知らせください。
+  </p>
+
+  <nav class="post-nav" aria-label="前後の記事">
+    {% if page.previous %}<a class="prev" href="{{ page.previous.url | relative_url }}"><span>前の記事</span>{{ page.previous.title }}</a>{% endif %}
+    {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><span>次の記事</span>{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>

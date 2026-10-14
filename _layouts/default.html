@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-mark" href="{{ '/' | relative_url }}">
+      {% include fan.html %}
+      <span class="site-title">{{ site.title }}</span>
+    </a>
+    <nav class="site-nav" aria-label="サイト内">
+      <a href="{{ '/' | relative_url }}">記事一覧</a>
+      <a href="{{ '/about/' | relative_url }}">このサイトについて</a>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>{{ site.contact_note }}</p>
+    <p>書き手：{{ site.author }}（{{ site.author_role }}）</p>
+    <p class="small">記事の文章は書き手に、写真・聞き書きの内容はそれぞれの提供者に権利があります。無断転載はご遠慮ください。</p>
+  </footer>
+</body>
+</html>

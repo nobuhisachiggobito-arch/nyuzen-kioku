@@ -1,0 +1,39 @@
+# ===== サイトの基本設定 =====
+# 【 】の部分を自分の内容に書き換えてください。
+
+title: 入善 水のききがき帖
+description: 黒部川がつくった扇状地の町・入善。水とともにあった暮らしの記憶を、移住者が聞いて、歩いて、書き残す記録です。
+author: さえきのぶひさ
+author_role: 入善町地域おこし協力隊
+x_account: nyuzen_o_motto
+contact_note: 内容の誤りや、思い出・写真の情報提供は X（@nyuzen_o_motto）のDMでお知らせください。
+
+# 独自ドメインを使う場合は url を書き換え、baseurl は空のままにします。
+# 例: url: "https://nyuzen-kioku.jp"
+# GitHub の無料アドレス（ユーザー名.github.io/リポジトリ名）で公開する場合は
+# url: "https://【GitHubユーザー名】.github.io"
+# baseurl: "/【リポジトリ名】"
+url: "https://nobuhisachiggobito-arch.github.io"
+baseurl: "/nyuzen-kioku"
+
+lang: ja
+timezone: Asia/Tokyo
+permalink: /:year/:month/:title/
+markdown: kramdown
+
+# 記事の分類（記事の category に、この中の1つを書きます）
+categories_list:
+  - 水と治水
+  - 暮らし
+  - 場所
+  - 人と聞き書き
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - .claude/
+  - templates/

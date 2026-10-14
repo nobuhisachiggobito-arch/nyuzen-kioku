@@ -1,0 +1,178 @@
+/* 入善 水のききがき帖 — 色は「雪どけ水と扇状地」から */
+:root {
+  --paper: #f3f6f5;
+  --surface: #ffffff;
+  --ink: #1c2a31;
+  --muted: #56666d;
+  --water: #276a7c;
+  --water-soft: #dde9ec;
+  --line: #c8d3d6;
+  --serif: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  --display: "Shippori Mincho", "Noto Serif JP", serif;
+  --sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  --measure: 36em;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141c20;
+    --surface: #1b252a;
+    --ink: #e4ecee;
+    --muted: #9fb0b6;
+    --water: #7cc0cf;
+    --water-soft: #1f3239;
+    --line: #2f3e44;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.95;
+  font-feature-settings: "palt" 0;
+}
+a { color: var(--water); text-underline-offset: 0.2em; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--water); outline-offset: 3px; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ヘッダー */
+.site-header {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 20px 16px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+.site-mark {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--ink); text-decoration: none;
+}
+.fan { width: 44px; height: 24px; flex: none; }
+.fan path { fill: none; stroke: var(--water); stroke-width: 2.2; stroke-linecap: round; }
+.fan .sea { stroke: var(--muted); stroke-width: 1.4; }
+.site-title { font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: 0.06em; }
+.site-nav { display: flex; gap: 18px; font-family: var(--sans); font-size: 0.85rem; }
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover { color: var(--water); }
+
+.site-main { max-width: 52rem; margin: 0 auto; padding: 0 16px 64px; }
+
+/* トップ：扇の線を背景に一度だけ */
+.intro {
+  position: relative;
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+.intro h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  margin: 0 0 20px;
+}
+.intro p { max-width: var(--measure); color: var(--muted); margin: 0; }
+
+/* 分類ボタン */
+.filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+.filter button {
+  font-family: var(--sans); font-size: 0.85rem;
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--line); background: transparent; color: var(--ink);
+  cursor: pointer;
+}
+.filter button.is-active { background: var(--water); border-color: var(--water); color: var(--paper); }
+
+/* 記事一覧：川の流れのように左に一本の線 */
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list li { border-bottom: 1px solid var(--line); }
+.post-list a {
+  display: grid; gap: 6px;
+  padding: 22px 0 22px 18px;
+  border-left: 2px solid transparent;
+  color: var(--ink); text-decoration: none;
+}
+.post-list a:hover { border-left-color: var(--water); }
+.list-title { font-family: var(--display); font-weight: 700; font-size: 1.3rem; line-height: 1.5; }
+.list-summary { color: var(--muted); font-size: 0.95rem; max-width: var(--measure); }
+.empty { color: var(--muted); padding: 24px 0; }
+
+.post-meta {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+  font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin: 0;
+}
+.post-category {
+  color: var(--water); background: var(--water-soft);
+  padding: 1px 10px; border-radius: 3px;
+}
+
+/* 記事ページ */
+.post { max-width: var(--measure); margin: 0 auto; padding-top: 40px; }
+.post-title {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(1.7rem, 5.5vw, 2.3rem); line-height: 1.45;
+  letter-spacing: 0.03em; margin: 14px 0 16px;
+}
+.post-summary { color: var(--muted); margin: 0 0 8px; }
+.post-speaker { font-family: var(--sans); font-size: 0.9rem; margin: 0; }
+.post-hero { margin: 28px 0; }
+.post-hero figcaption, .post-body figcaption { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-top: 8px; }
+
+.post-body { margin-top: 32px; }
+.post-body h2 {
+  font-family: var(--display); font-size: 1.35rem; line-height: 1.5;
+  margin: 2.4em 0 0.8em; padding-left: 14px;
+  border-left: 3px solid var(--water);
+}
+.post-body h3 { font-family: var(--display); font-size: 1.1rem; margin: 2em 0 0.6em; }
+.post-body p { margin: 0 0 1.4em; }
+/* 聞き書きの言葉は引用で */
+.post-body blockquote {
+  margin: 1.8em 0; padding: 18px 20px;
+  background: var(--surface); border-radius: 4px;
+  border-left: 3px solid var(--line);
+  font-size: 1.05rem;
+}
+.post-body blockquote p:last-child { margin-bottom: 0; }
+.post-body blockquote cite { display: block; margin-top: 10px; font-family: var(--sans); font-style: normal; font-size: 0.8rem; color: var(--muted); }
+.post-body ul, .post-body ol { padding-left: 1.4em; margin: 0 0 1.4em; }
+.post-body table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 0 0 1.6em; display: block; overflow-x: auto; }
+.post-body th, .post-body td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+
+.note {
+  font-family: var(--sans); font-size: 0.85rem; line-height: 1.8; color: var(--muted);
+  border-top: 1px solid var(--line); padding-top: 16px; margin-top: 40px;
+}
+.sources { margin-top: 40px; padding: 20px; background: var(--surface); border-radius: 4px; }
+.sources h2 { font-family: var(--sans); font-size: 0.9rem; font-weight: 500; margin: 0 0 8px; }
+.sources ul { margin: 0; padding-left: 1.2em; font-family: var(--sans); font-size: 0.85rem; line-height: 1.8; }
+.post-updated { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin: 24px 0; }
+
+.post-nav { display: grid; gap: 12px; margin-top: 32px; }
+@media (min-width: 640px) { .post-nav { grid-template-columns: 1fr 1fr; } .post-nav .next { text-align: right; grid-column: 2; } }
+.post-nav a {
+  display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 4px;
+  color: var(--ink); text-decoration: none; font-size: 0.95rem; line-height: 1.6;
+}
+.post-nav a span { display: block; font-family: var(--sans); font-size: 0.75rem; color: var(--muted); }
+.post-nav a:hover { border-color: var(--water); }
+
+/* フッター */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 16px 40px;
+  max-width: 52rem; margin: 0 auto;
+  font-family: var(--sans); font-size: 0.8rem; line-height: 1.8; color: var(--muted);
+}
+.site-footer p { margin: 0 0 6px; }
+.site-footer .small { font-size: 0.75rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

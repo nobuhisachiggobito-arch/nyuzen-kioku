@@ -1,0 +1,54 @@
+---
+layout: default
+---
+<section class="intro">
+  <h1>扇状地の水と、<br>暮らしの記憶。</h1>
+  <p>{{ site.description }}</p>
+</section>
+
+<nav class="filter" aria-label="分類で絞り込む">
+  <button type="button" class="is-active" data-cat="all" aria-pressed="true">すべて</button>
+  {% for c in site.categories_list %}
+  <button type="button" data-cat="{{ c }}" aria-pressed="false">{{ c }}</button>
+  {% endfor %}
+</nav>
+
+<ol class="post-list" reversed>
+  {% for post in site.posts %}
+  <li data-cat="{{ post.category }}">
+    <a href="{{ post.url | relative_url }}">
+      <span class="post-meta">
+        <span class="post-category">{{ post.category }}</span>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%-m月%-d日" }}</time>
+      </span>
+      <span class="list-title">{{ post.title }}</span>
+      {% if post.summary %}<span class="list-summary">{{ post.summary }}</span>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ol>
+<p class="empty" hidden>この分類の記事はまだありません。</p>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.filter button');
+    var items = document.querySelectorAll('.post-list li');
+    var empty = document.querySelector('.empty');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var cat = b.dataset.cat, shown = 0;
+        buttons.forEach(function (x) {
+          var on = x === b;
+          x.classList.toggle('is-active', on);
+          x.setAttribute('aria-pressed', on);
+        });
+        items.forEach(function (li) {
+          var show = cat === 'all' || li.dataset.cat === cat;
+          li.hidden = !show;
+          if (show) shown++;
+        });
+        empty.hidden = shown > 0;
+      });
+    });
+  })();
+</script>
