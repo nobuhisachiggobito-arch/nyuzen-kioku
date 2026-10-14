@@ -132,6 +132,7 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 2.4em 0 0.8em; padding-left: 14px;
   border-left: 3px solid var(--water);
 }
+.post-body figure { margin: 1.8em 0; }
 .post-body h3 { font-family: var(--display); font-size: 1.1rem; margin: 2em 0 0.6em; }
 .post-body p { margin: 0 0 1.4em; }
 /* 聞き書きの言葉は引用で */
